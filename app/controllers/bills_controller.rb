@@ -1,11 +1,11 @@
 class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def index  
     if params[:search]
-      @bills = Bill.search(params[:search]).paginate(:page => params[:page])
+      @bills = Bill.search(params[:search]).paginate(:page => params[:page]).order(bill_num: :asc)
     else
-      @bills = Bill.all.paginate(:page => params[:page])
+      @bills = Bill.all.paginate(:page => params[:page]).order(bill_num: :asc)
     end
   end
 

@@ -46,7 +46,7 @@ class Admin::BillsController < Admin::BaseController
 
   def import
     Bill.import(params[:file])
-    redirect_to admin_root_path, notice: "Bills Added!"
+    redirect_to admin_root_path
   end
 
   private

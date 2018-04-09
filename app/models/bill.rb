@@ -9,6 +9,10 @@ class Bill < ApplicationRecord
 	#This updates existing bills and creates new bills using the uploaded CSV file. It is very verbose due to having lots of columns.
 	#In the future I may look to simplify this
 	def self.import(file)
+		if (file == nil)
+			return
+		end
+
     CSV.foreach(file.path, {headers: true, :encoding => 'windows-1251:utf-8'}) do |row|
 
     	if row["Title"].include?("Creation of a State Debt")
