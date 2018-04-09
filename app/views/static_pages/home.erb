@@ -1,0 +1,31 @@
+
+<div class="jumbotron">
+  <h1 class="display-3">Welcome to the Maryland Legislative Coalition!</h1>
+  <p class="lead">Here you can find all of the proposed legislation in Maryland for the 2018 session!</p>
+  <p>Below are high impact bills this session</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/bills" role="button">Search Bills!</a>
+  </p>
+</div>
+
+
+<div class="row" style="margin-left: 20px; margin-right: 20px">
+  <div class="col-sm-6">
+    <div class="card text-center" style="border: 1px solid">
+      <div class="card-block">
+        <h3 class="card-title"><%= @billOne.bill_num %></h3>
+        <p class="card-text"><%= @billOne.description %></p>
+        <%= link_to 'Learn More', bill_path(@billOne), :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card text-center" style="border: 1px solid">
+      <div class="card-block">
+        <h3 class="card-title"><%= @billTwo.bill_num %></h3>
+        <p class="card-text"><%= @billTwo.description %></p>
+        <%= link_to 'Learn More', bill_path(@billTwo), :class => "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

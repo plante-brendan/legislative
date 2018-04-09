@@ -1,0 +1,25 @@
+<%#This page shows very rudimentary information and it isn't formatted that well at the moment.%>
+<div style="text-align:center">
+	<h4><%=@bill.bill_num + ": " + @bill.title%></h4>
+		<%if @xfile != nil%>
+		<h4><%=link_to "This bill has a cross filed bill: " + @xfile.bill_num + ". Click here to view that bill", edit_admin_bill_path(@xfile)%></h4>
+	<%end%>
+	<h4>Hearing Date Origin: <%=@bill.primary_hearing_date_origin%></h4>
+	<h4>Hearing Date Opposite: <%=@bill.primary_hearing_date_opposite%></h4>
+	<h4>Synopsis:</h4><%=@bill.synopsis%>
+
+	<%= form_tag admin_bill_path(@bill), method: "put" do %>
+		<h4>Category:</h4>
+			<%= text_field_tag :category, @bill.category %>
+		<br><br>
+		<%= hidden_field_tag :vip, false %>
+		<%= label_tag "Is this a VIP Bill?" %>
+		<%= check_box_tag :vip, true, @bill.vip%>
+	  <h4>Bill Description:</h4>
+	  	<%= text_area_tag :description, @bill.description, size: "200x10"%><br>
+	  	<%= submit_tag "Submit Bill" %>
+	<% end %>
+</div>
+<%=link_to "View Show page", admin_bill_path(@bill)%>
+<br>
+<%=link_to "Back to Index", admin_bills_path%>

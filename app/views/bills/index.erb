@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10">
+    	<table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th style="width:10%">Bill Number</th>
+		        <th style="width:40%">Title</th>
+		        <th style="width:30%">Primary Committee</th>
+		        <th>Category</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<% @bills.each do |bill| %>
+		      <tr>
+		        <td><%= link_to bill.bill_num, bill_path(bill) %></td>
+		        <td><%= bill.title %></td>
+		        <td><%= bill.committee_primary_origin %></td>
+		        <td><%= bill.category %></td>
+		      </tr>
+		      <% end %>
+		    </tbody>
+		  </table>
+    </div>
+    <div class="col-sm-2" style="margin-top: 0px">
+    	<h5>Search by Title, Bill Number, Category and Primary Committee</h5>
+      <%= form_tag bills_path, :method => 'get'  do %>
+		    <%= text_field_tag :search, params[:search]%>
+		    <%= submit_tag "Search" %>
+		  <% end %>
+    </div>
+    <%= will_paginate @bills %>
+  </div>
+</div>

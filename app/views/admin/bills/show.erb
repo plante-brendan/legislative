@@ -1,0 +1,14 @@
+<div style="text-align:center">
+	<h4><%=@bill.bill_num + ": " + @bill.title%></h4>
+		<%if @xfile != nil%>
+		<h4><%=link_to "This bill has a cross filed bill: " + @xfile.bill_num + ". Click here to view that bill", admin_bill_path(@xfile)%></h4>
+	<%end%>
+	<h4>Primary Hearing Date - House of Origin: <%=@bill.primary_hearing_date_origin%></h4>
+	<h4>Primary Hearing Date - Opposite House: <%=@bill.primary_hearing_date_opposite%></h4>
+	<h4>Official Description:</h4><%=@bill.synopsis%>
+	<br>
+	<h4>Simplified Description:</h4><%=@bill.description%>
+</div>
+<%=link_to "Back to edit page", edit_admin_bill_path(@bill)%>
+<br>
+<%=link_to "Back to Index", admin_bills_path%>
